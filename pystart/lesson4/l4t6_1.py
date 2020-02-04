@@ -4,3 +4,14 @@
 б) бесконечный итератор, повторяющий элементы некоторого списка, определенного заранее.
 Подсказка: использовать функцию count() и cycle() модуля itertools.
 """
+from itertools import count
+
+
+def digiter(d):
+    for i in count(5):
+        yield i
+
+
+if __name__ == "__main__":
+    for i in digiter(5):
+        print(i)
