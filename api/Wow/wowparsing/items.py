@@ -15,3 +15,4 @@ class WowparsingItem(scrapy.Item):
     wow_class = scrapy.Field()
     build = scrapy.Field()
     pvp = scrapy.Field()
+    type = scrapy.Field()

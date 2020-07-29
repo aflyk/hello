@@ -15,7 +15,7 @@ class WowparsingPipeline:
 
     def __init__(self):
         self.client = MongoClient('localhost', 27017)
-        self.mono_base = self.client.wow2v2_rate
+        self.mono_base = self.client.wow_rate
 
     def process_item(self, item, spider):
         collection = self.mono_base[spider.name + str(datetime.datetime.now().date())]
@@ -29,7 +29,10 @@ class WowparsingPipeline:
                 item['build'] = [i['name'] for i in data['character']['specs'][pos]['talents']['flattened']]
                 item['pvp'] = [i['name'] for i in data['character']['specs'][pos]['pvpTalents']['flattened']]
 
-        item['rate'] = data['character']['pvp']['ratings']['2v2']['rating']
+        dict_type = {0: '2v2', 1: '3v3', 2: 'battlegrounds'}
+        item['rate'] = data['character']['pvp']['ratings'][dict_type[item['type']]]['rating']
+        item['type'] = dict_type[item['type']]
+
         if collection.count_documents(item) == 0:
             collection.insert_one(item)
         return item

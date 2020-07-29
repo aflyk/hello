@@ -11,7 +11,7 @@ class InstagramSpider(scrapy.Spider):
     allowed_domains = ['instagram.com']
     start_urls = ['https://instagram.com/']
     insta_login = 'aflyck'
-    insta_pass = '#PWD_INSTAGRAM_BROWSER:10:1595492301:ASxQANMKD5i1AamrQNWfOyyi3Quz5lnCD9owh6hmEftqkidiF+ejLGcD+I3s5XOxW1jiRITX5rVaw0Y8HPVP1cQ/eHoc/GF8NYzFhjuIE2zXa0kKaloTcR3YvNHfimh8vaelR4iF5UT6RNishUN4'
+    insta_pass = ''
     insta_login_link = 'https://www.instagram.com/accounts/login/ajax/'
     parse_users = ['mongodb', 'pikabu']
     list_follow = ['edge_followed_by', 'edge_follow']
